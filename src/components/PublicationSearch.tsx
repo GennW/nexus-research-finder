@@ -96,11 +96,29 @@ const PublicationSearch = () => {
       }
 
       const data = await response.json();
-      setResults(data[0]); // Assuming the response is an array with one object
+      console.log("Raw response from n8n:", data);
+      
+      // Handle different response structures
+      let processedData;
+      if (Array.isArray(data) && data.length > 0) {
+        processedData = data[0];
+      } else if (data && typeof data === 'object') {
+        processedData = data;
+      } else {
+        throw new Error("Неожиданная структура ответа от сервера");
+      }
+      
+      console.log("Processed data:", processedData);
+      
+      if (!processedData.statistics || !processedData.publications) {
+        throw new Error("Данные не содержат необходимые поля (statistics, publications)");
+      }
+      
+      setResults(processedData);
       
       toast({
         title: "Поиск завершен",
-        description: `Найдено ${data[0].statistics.total_publications} публикаций`,
+        description: `Найдено ${processedData.statistics.total_publications} публикаций`,
       });
     } catch (error) {
       console.error("Search error:", error);
