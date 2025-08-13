@@ -76,8 +76,7 @@ const PublicationSearch = () => {
 
     setLoading(true);
     try {
-      // Replace with your actual n8n webhook URL
-      const webhookUrl = "YOUR_N8N_WEBHOOK_URL";
+      const webhookUrl = "https://n8n.infomirit.ru:8443/webhook/search-publications";
       
       const response = await fetch(webhookUrl, {
         method: "POST",
