@@ -2,6 +2,7 @@
 
 ## Project info
 **URL**: https://gennw.github.io/nexus-research-finder
+**URL**: https://preview--nexus-research-finder.lovable.app/
 **URL**: https://lovable.dev/projects/1459136f-f567-4367-a8a1-82232cc3fc76
 
 ## How can I edit this code?
